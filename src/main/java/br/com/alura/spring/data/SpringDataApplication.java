@@ -12,7 +12,7 @@ import br.com.alura.spring.data.service.CrudCargoService;
 
 @SpringBootApplication
 public class SpringDataApplication implements CommandLineRunner {
-	1
+	
 	private final CrudCargoService cargoService;
 	private boolean system = true;
 	
@@ -40,10 +40,6 @@ public class SpringDataApplication implements CommandLineRunner {
 				system = false;
 			}
 		}
-		
-		
-		
-
 	}
 
 }
