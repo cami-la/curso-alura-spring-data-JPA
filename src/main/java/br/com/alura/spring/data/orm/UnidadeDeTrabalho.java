@@ -1,6 +1,7 @@
 package br.com.alura.spring.data.orm;
 
 import java.util.List;
+import java.util.Scanner;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,10 +19,12 @@ public class UnidadeDeTrabalho {
 	private Integer id;
 	private String descricao;
 	private String endereco;
-	@ManyToMany(mappedBy = "unidadeTrabalhos", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "unidadesTrabalho", fetch = FetchType.EAGER)
 	private List<Funcionario> funcionarios;
 	
-	public Integer getId() {
+	public void inicial(Scanner scanner) {
+	}
+		public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
@@ -50,5 +53,4 @@ public class UnidadeDeTrabalho {
 		return "UnidadeDeTrabalho [id=" + id + ", descricao=" + descricao + ", endereco=" + endereco + ", funcionarios="
 				+ funcionarios + "]";
 	}
-	
 }
