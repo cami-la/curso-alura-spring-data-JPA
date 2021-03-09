@@ -26,22 +26,22 @@ public class CrudCargoService {
 		System.out.println("4 - Deletar");
 
 		int action = scanner.nextInt();
-			switch (action) {
-			case 1:
-				salvar(scanner);
-				break;
-			case 2:
-				atualizar(scanner);
-				break;
-			case 3:
-				visualizar();
-				break;
-			case 4:
-				deletar(scanner);
-				break;
-			default:
-				break;
-			}
+		switch (action) {
+		case 1:
+			salvar(scanner);
+			break;
+		case 2:
+			atualizar(scanner);
+			break;
+		case 3:
+			visualizar();
+			break;
+		case 4:
+			deletar(scanner);
+			break;
+		default:
+			break;
+		}
 	}
 
 	private void deletar(Scanner scanner) {

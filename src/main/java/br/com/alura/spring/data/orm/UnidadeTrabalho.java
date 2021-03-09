@@ -12,42 +12,48 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="unidades_de_trabalho")
-public class UnidadeDeTrabalho {
+@Table(name = "unidades_trabalho")
+public class UnidadeTrabalho {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String descricao;
 	private String endereco;
 	@ManyToMany(mappedBy = "unidadesTrabalho", fetch = FetchType.EAGER)
 	private List<Funcionario> funcionarios;
-	
-	public void inicial(Scanner scanner) {
-	}
-		public Integer getId() {
+
+	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getDescricao() {
 		return descricao;
 	}
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
 	public String getEndereco() {
 		return endereco;
 	}
+
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
+
 	public List<Funcionario> getFuncionarios() {
 		return funcionarios;
 	}
+
 	public void setFuncionarios(List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
 	}
+
 	@Override
 	public String toString() {
 		return "UnidadeDeTrabalho [id=" + id + ", descricao=" + descricao + ", endereco=" + endereco + ", funcionarios="

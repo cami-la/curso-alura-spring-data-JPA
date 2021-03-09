@@ -34,7 +34,7 @@ public class Funcionario {
 	@Fetch(FetchMode.SELECT)
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "funcionarios_unidades", joinColumns = {@JoinColumn(name = "fk_funcionario")}, inverseJoinColumns = {@JoinColumn(name = "fk_unidade")})
-	private List<UnidadeDeTrabalho> unidadesTrabalho;
+	private List<UnidadeTrabalho> unidadesTrabalho;
 	
 	public Integer getId() {
 		return id;
@@ -73,6 +73,12 @@ public class Funcionario {
 		this.cargo = cargo;
 	}
 	
+	public List<UnidadeTrabalho> getUnidadesTrabalho() {
+		return unidadesTrabalho;
+	}
+	public void setUnidadesTrabalho(List<UnidadeTrabalho> unidadesTrabalho) {
+		this.unidadesTrabalho = unidadesTrabalho;
+	}
 	@Override
 	public String toString() {
 		return "Funcionario [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", salario=" + salario
