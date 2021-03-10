@@ -108,58 +108,55 @@ public class CrudFuncionarioService {
 	}
 
 	private void salvar(Scanner scanner) {
-		System.out.println("Nome");
-		String nome = scanner.next();
+		System.out.println("Digite o nome");
+        String nome = scanner.next();
 
-		System.out.println("CPF");
-		String cpf = scanner.next();
+        System.out.println("Digite o cpf");
+        String cpf = scanner.next();
 
-		System.out.println("Salário");
-		BigDecimal salario = scanner.nextBigDecimal();
+        System.out.println("Digite o salario");
+        BigDecimal salario = scanner.nextBigDecimal();
 
-		System.out.println("Data de Contratação");
-		String dataContratacao = scanner.next();
-		
-		System.out.println(">>>>> Lista de Cargos <<<<<");
-        Iterable<Cargo> cargos = this.cargoRepository.findAll();
-        cargos.forEach(System.out::println);
-        
-		System.out.println("Cargo id");
-		Integer cargoId = scanner.nextInt();
+        System.out.println("Digite a data de contracao");
+        String dataContratacao = scanner.next();
 
-		List<UnidadeTrabalho> unidades = unidade(scanner);
-		Optional<Cargo> cargo = cargoRepository.findById(cargoId);
+        System.out.println("Digite o cargoId");
+        Integer cargoId = scanner.nextInt();
 
-		Funcionario funcionario = new Funcionario();
-		funcionario.setNome(nome);
-		funcionario.setCpf(cpf);
-		funcionario.setSalario(salario);
-		funcionario.setDataContratacao(LocalDate.parse(dataContratacao, formatter));
-		funcionario.setCargo(cargo.get());
-		funcionario.setUnidadesTrabalho(unidades);
+        List<UnidadeTrabalho> unidades = unidade(scanner);
 
-		funcionarioRepository.save(funcionario);
-		System.out.println("Salvo");
+        Funcionario funcionario = new Funcionario();
+        funcionario.setNome(nome);
+        funcionario.setCpf(cpf);
+        funcionario.setSalario(salario);
+        funcionario.setDataContratacao(LocalDate.parse(dataContratacao, formatter));
+        Optional<Cargo> cargo = cargoRepository.findById(cargoId);
+        funcionario.setCargo(cargo.get());
+        funcionario.setUnidadesTrabalho(unidades);
+
+        funcionarioRepository.save(funcionario);
+        System.out.println("Salvo");
 	}
 	
 	
 	private List<UnidadeTrabalho> unidade(Scanner scanner) {
 		
-		List<UnidadeTrabalho> unidades = new ArrayList<UnidadeTrabalho>();
-		
-		while (true) {
-			System.out.println("Id Unidade de Trabalho (0 - Sair)");
-			Integer unidadeId = scanner.nextInt();
+		Boolean isTrue = true;
+        List<UnidadeTrabalho> unidades = new ArrayList<>();
 
-			if (unidadeId == 0)
-				break;
-			else {
-				Optional<UnidadeTrabalho> unidade = unidadeTrabalhoRepository.findById(unidadeId);
-				unidades.add(unidade.get());
-			}
-		}
+        while (isTrue) {
+            System.out.println("Digite o unidadeId (Para sair digite 0)");
+            Integer unidadeId = scanner.nextInt();
 
-		return unidades;
+            if(unidadeId != 0) {
+                Optional<UnidadeTrabalho> unidade = unidadeTrabalhoRepository.findById(unidadeId);
+                unidades.add(unidade.get());
+            } else {
+                isTrue = false;
+            }
+        }
+
+        return unidades;
 	}
 
 }
